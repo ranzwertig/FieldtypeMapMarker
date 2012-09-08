@@ -81,7 +81,7 @@ class InputfieldMapMarker extends Inputfield {
 
 		$out = <<< _OUT
 
-		<p class='InputfieldMapMarkerStreet'>
+		<p class='InputfieldMapMarkerAddress'>
 			<label>
 				Street<br />
 				<input type='text' id='{$id}' name='_{$name}_street' value='{$street}'  /><br />
@@ -89,7 +89,7 @@ class InputfieldMapMarker extends Inputfield {
 			</label>
 		</p>
 
-		<p class='InputfieldMapMarkerPostcode'>
+		<p class='InputfieldMapMarkerAddress'>
 			<label>
 				Postcode<br />
 				<input type='text' id='{$id}' name='_{$name}_postcode' value='{$postcode}'  /><br />
@@ -97,7 +97,7 @@ class InputfieldMapMarker extends Inputfield {
 			</label>
 		</p>
 
-		<p class='InputfieldMapMarkerCity'>
+		<p class='InputfieldMapMarkerAddress'>
 			<label>
 				City<br />
 				<input type='text' id='{$id}' name='_{$name}_city' value='{$city}'  /><br />
@@ -123,7 +123,7 @@ class InputfieldMapMarker extends Inputfield {
 
 		<p class='InputfieldMapMarkerAreal'>
 			<label>
-				Administrative Level 2<br />
+				Administrative Level 3<br />
 				<input type='text' id='{$id}' name='_{$name}_areal3' value='{$areal3}'  /><br />
 				<span class='detail'>{$apiNote}areal3</span>
 			</label>
