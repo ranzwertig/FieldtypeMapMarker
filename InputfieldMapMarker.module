@@ -164,7 +164,7 @@ _OUT;
 		$name = $this->attr('name'); 
 		$marker = $this->attr('value');
 
-		if(isset($input->$name)) {
+		if(isset($input["_{$name}_street"]) && isset($input["_{$name}_postcode"]) && isset($input["_{$name}_city"])) {
 
 			$marker->set('street', $input["_{$name}_street"]);
 			$marker->set('postcode', $input["_{$name}_postcode"]);

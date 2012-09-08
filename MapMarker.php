@@ -131,8 +131,6 @@ class MapMarker extends WireData {
 		$this->status = $status; 
 		$this->message("Geocode {$this->statusString}: '{$address}'"); 
 
-		var_dump($this);
-
 		return $this->status; 
 	}
 
