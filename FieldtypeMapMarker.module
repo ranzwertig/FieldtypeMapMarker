@@ -63,12 +63,12 @@ class FieldtypeMapMarker extends Fieldtype {
 		if(!$value instanceof MapMarker) $value = $this->getBlankValue($page, $field); 
 
 		// if the address changed, tell the $page that this field changed
-		if($value->isChanged('city')) $page->trackChange($field->city); 
+		/*if($value->isChanged('city')) $page->trackChange($field->city); 
 		if($value->isChanged('postcode')) $page->trackChange($field->postcode);
 		if($value->isChanged('street')) $page->trackChange($field->street);
 		if($value->isChanged('areal1')) $page->trackChange($field->areal1);
 		if($value->isChanged('areal2')) $page->trackChange($field->areal2);
-		if($value->isChanged('areal3')) $page->trackChange($field->areal3);
+		if($value->isChanged('areal3')) $page->trackChange($field->areal3);*/
 
 		return $value; 
 	}
