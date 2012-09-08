@@ -22,7 +22,7 @@ class InputfieldMapMarker extends Inputfield {
 	public static function getModuleInfo() {
 		return array(
 			'title' => 'Map Marker',
-			'version' => 101
+			'version' => 101,
 			'summary' => "Provides input for the MapMarker Fieldtype with administrative areas.",
 			);
 	}
