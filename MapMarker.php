@@ -28,7 +28,12 @@ class MapMarker extends WireData {
 	public function __construct() {
 		$this->set('lat', '');
 		$this->set('lng', '');
-		$this->set('address', ''); 
+		$this->set('street', ''); 
+		$this->set('city', '');
+		$this->set('postcode', '');
+		$this->set('areal1', '');
+		$this->set('areal2', '');
+		$this->set('areal3', '');
 		$this->set('status', 0); 
 	}
 
@@ -39,7 +44,22 @@ class MapMarker extends WireData {
 			if(strpos($value, ',') !== false) $value = str_replace(',', '.', $value); // convert 123,456 to 123.456
 			if(!is_numeric($value)) $value = '';	
 
-		} else if($key == 'address') {
+		} else if($key == 'street') {
+			$value = wire('sanitizer')->text($value);
+
+		} else if($key == 'city') {
+			$value = wire('sanitizer')->text($value);
+
+		} else if($key == 'postode') {
+			$value = wire('sanitizer')->text($value);
+
+		} else if($key == 'areal1') {
+			$value = wire('sanitizer')->text($value);
+
+		} else if($key == 'areal2') {
+			$value = wire('sanitizer')->text($value);
+
+		} else if($key == 'areal3') {
 			$value = wire('sanitizer')->text($value);
 
 		} else if($key == 'status') { 
@@ -58,15 +78,16 @@ class MapMarker extends WireData {
 	public function geocode() {
 
 		// check if address was already geocoded
-		if($this->geocodedAddress == $this->address) return $this->status; 
-		$this->geocodedAddress = $this->address;
+		$address = $this->street . ' ,' . $this->postcode . ' ' . $this->city;
+		if($this->geocodedAddress == $address) return $this->status; 
+		$this->geocodedAddress = $address;
 
 		if(!ini_get('allow_url_fopen')) {
 			$this->error("Geocode is not supported because 'allow_url_fopen' is disabled in PHP"); 
 			return 0;
 		}
 
-		$url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" . urlencode($this->address);
+		$url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" . urlencode($address);
 		$json = file_get_contents($url);
 		$json = json_decode($json, true);
 
@@ -83,6 +104,23 @@ class MapMarker extends WireData {
 		$location = $geometry['location'];
 		$locationType = $geometry['location_type'];
 
+		// extract administrative area levels
+		foreach ($json['results'][0]['address_components'] as $addressComponent) {
+
+			if(in_array('administrative_area_level_3', $addressComponent['types'])) {
+				$this->areal3 = $addressComponent['long_name'];
+			}
+
+			if(in_array('administrative_area_level_2', $addressComponent['types'])) {
+				$this->areal2 = $addressComponent['long_name'];
+			}
+
+			if(in_array('administrative_area_level_1', $addressComponent['types'])) {
+				$this->areal1 = $addressComponent['long_name'];
+			}
+
+		}
+
 		$this->lat = $location['lat'];
 		$this->lng = $location['lng'];
 
@@ -91,7 +129,7 @@ class MapMarker extends WireData {
 		if($status === false) $status = 1; // OK	
 
 		$this->status = $status; 
-		$this->message("Geocode {$this->statusString}: '{$this->address}'"); 
+		$this->message("Geocode {$this->statusString}: '{$address}'"); 
 
 		return $this->status; 
 	}
@@ -101,7 +139,7 @@ class MapMarker extends WireData {
 	 *
 	 */
 	public function __toString() {
-		return "{$this->address} ({$this->lat}, {$this->lng}) [{$this->statusString}]";
+		return "{$this->street}, {$this->postcode} {$this->city} ({$this->lat}, {$this->lng}) [{$this->statusString}]";
 	}
 	
 }
