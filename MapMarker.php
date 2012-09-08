@@ -92,7 +92,7 @@ class MapMarker extends WireData {
 		$json = json_decode($json, true);
 
 		if(empty($json['status']) || $json['status'] != 'OK') {
-			$this->error("Error geocoding address");
+			$this->error("Fehler beim Geocodieren der Adresse.");
 			if(isset($json['status'])) $this->status = (int) array_search($json['status'], $this->geocodeStatuses);
 				else $this->status = -1; 
 			$this->lat = 0;

@@ -83,7 +83,7 @@ class InputfieldMapMarker extends Inputfield {
 
 		<p class='InputfieldMapMarkerAddress'>
 			<label>
-				Street<br />
+				Straße<br />
 				<input type='text' id='{$id}' name='_{$name}_street' value='{$street}'  /><br />
 				<span class='detail'>{$apiNote}street</span>
 			</label>
@@ -91,7 +91,7 @@ class InputfieldMapMarker extends Inputfield {
 
 		<p class='InputfieldMapMarkerAddress'>
 			<label>
-				Postcode<br />
+				Postleitzahl<br />
 				<input type='text' id='{$id}' name='_{$name}_postcode' value='{$postcode}'  /><br />
 				<span class='detail'>{$apiNote}postcode</span>
 			</label>
@@ -99,7 +99,7 @@ class InputfieldMapMarker extends Inputfield {
 
 		<p class='InputfieldMapMarkerAddress'>
 			<label>
-				City<br />
+				Ort<br />
 				<input type='text' id='{$id}' name='_{$name}_city' value='{$city}'  /><br />
 				<span class='detail'>{$apiNote}city</span>
 			</label>
@@ -107,7 +107,7 @@ class InputfieldMapMarker extends Inputfield {
 
 		<p class='InputfieldMapMarkerAreal'>
 			<label>
-				Administrative Level 1<br />
+				Bundesland<br />
 				<input type='text' id='{$id}' name='_{$name}_areal1' value='{$areal1}'  /><br />
 				<span class='detail'>{$apiNote}areal1</span>
 			</label>
@@ -115,7 +115,7 @@ class InputfieldMapMarker extends Inputfield {
 
 		<p class='InputfieldMapMarkerAreal'>
 			<label>
-				Administrative Level 2<br />
+				Regierungsbezirk<br />
 				<input type='text' id='{$id}' name='_{$name}_areal2' value='{$areal2}'  /><br />
 				<span class='detail'>{$apiNote}areal2</span>
 			</label>
@@ -123,7 +123,7 @@ class InputfieldMapMarker extends Inputfield {
 
 		<p class='InputfieldMapMarkerAreal'>
 			<label>
-				Administrative Level 3<br />
+				Kreis<br />
 				<input type='text' id='{$id}' name='_{$name}_areal3' value='{$areal3}'  /><br />
 				<span class='detail'>{$apiNote}areal3</span>
 			</label>
@@ -149,7 +149,7 @@ class InputfieldMapMarker extends Inputfield {
 _OUT;
 
 		if($marker->status > 0) $out .= "<div class='InputfieldMapMarkerMap' id='_{$id}_map' data-lat='{$marker->lat}' data-lng='{$marker->lng}'></div>";
-		if(!$this->description) $this->description = "Enter a location in the Address field below and it will be geocoded to latitude/longitude when you save.";
+		if(!$this->description) $this->description = "Bitte geben Sie eine Adresse in die Felder Straße, Postleitzahl und Ort ein um die restlichen Informationen nach dem Speichern zu erhalten.";
 		$this->notes = "Geocode Status: " . $marker->statusString; 
 
 		return $out; 
