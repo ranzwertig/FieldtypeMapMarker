@@ -4,13 +4,14 @@
 
 .InputfieldMapMarkerAddress {
 	float: left; 
-	width: 50%; 
+	width: 48%; 
 	padding-right: 1%; 
 }
 
 .InputfieldMapMarkerAreal {
 	float: left; 
-	width: 49%; 
+	width: 48%; 
+	padding-right: 1%;
 }
 
 .InputfieldMapMarkerLat,
