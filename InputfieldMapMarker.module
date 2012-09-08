@@ -105,7 +105,7 @@ class InputfieldMapMarker extends Inputfield {
 			</label>
 		</p>
 
-		<p class='InputfieldMapMarkerAreal>
+		<p class='InputfieldMapMarkerAreal'>
 			<label>
 				Administrative Level 1<br />
 				<input type='text' id='{$id}' name='_{$name}_areal1' value='{$areal1}'  /><br />
@@ -113,7 +113,7 @@ class InputfieldMapMarker extends Inputfield {
 			</label>
 		</p>
 
-		<p class='InputfieldMapMarkerAreal>
+		<p class='InputfieldMapMarkerAreal'>
 			<label>
 				Administrative Level 2<br />
 				<input type='text' id='{$id}' name='_{$name}_areal2' value='{$areal2}'  /><br />
@@ -121,7 +121,7 @@ class InputfieldMapMarker extends Inputfield {
 			</label>
 		</p>
 
-		<p class='InputfieldMapMarkerAreal>
+		<p class='InputfieldMapMarkerAreal'>
 			<label>
 				Administrative Level 2<br />
 				<input type='text' id='{$id}' name='_{$name}_areal3' value='{$areal3}'  /><br />
