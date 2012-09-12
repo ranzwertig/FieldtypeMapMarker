@@ -146,6 +146,33 @@ class FieldtypeMapMarker extends Fieldtype {
 		return $sleepValue; 
 	}
 
+	/**
+	 * Get the query that matches a Fieldtype table's data with a given value
+	 *
+	 * Possible template method: If overridden, children should NOT call this parent method. 
+	 *
+	 * @param DatabaseQuerySelect $query
+	 * @param string $table The table name to use
+	 * @param string $field Name of the field (typically 'data', unless selector explicitly specified another)
+	 * @param string $operator The comparison operator
+	 * @param mixed $value The value to find
+	 * @return DatabaseQuery $query
+	 *
+	 */
+	public function getMatchQuery($query, $table, $subfield, $operator, $value) {
+	   $value = $this->fuel('db')->escape_string($value);
+	   if($operator == '%=') {
+	       $operator = ' LIKE ';
+	       $value = '%' . $value . '%';
+	   } else if(!$this->fuel('db')->isOperator($operator)) {
+	       throw new WireException("Operator '{$operator}' is not implemented in {$this->className}");
+	   }
+	
+	
+	   $query->where("{$table}.{$subfield}{$operator}'$value'");
+	   return $query;
+	}	
+
 
 	/**
 	 * Return the database schema in specified format
